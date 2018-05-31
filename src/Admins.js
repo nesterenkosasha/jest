@@ -6,13 +6,13 @@ import isValid from './utils'
 import PropTypes from 'prop-types';
 
 
-class Admins extends Component {
+export class Admins extends Component {
     constructor(props){
         super(props)
         this.state={}
     }
     
-    handelSubmit = (e) => {
+    handelSubmit (e) {
         e.preventDefault()
         console.log(this.state)
         this.props.auth(this.state)
@@ -33,7 +33,7 @@ class Admins extends Component {
             <div className="logi">
             <div className="App-intro" >
             <h1>LOGIN PAGE</h1>
-            <form onSubmit={this.handelSubmit}
+            <form onSubmit={this.handelSubmit.bind(this)}
             onChange={this.handelChange}>
             <label htmlFor="login">Login: </label>
             <input type="text" id="login" /><br/>

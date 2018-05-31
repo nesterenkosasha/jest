@@ -12,28 +12,40 @@
   },
   "dependencies": {
     "babel-eslint": "^8.2.3",
-    "history": "^4.7.2",
+    "babel-jest": "^23.0.1",
+    "babel-preset-2017": "0.0.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^23.0.1",
     "json-server": "^0.12.2",
     "material-ui": "^1.0.0-beta.44",
     "react": "^16.3.2",
+    "react-addons-test-utils": "^15.6.2",
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "react-router-redux": "^5.0.0-alpha.9",
+    "react-router-redux": "^4.0.8",
     "react-scripts": "1.1.4",
+    "react-spinners": "^0.3.2",
+    "react-test-renderer": "^16.4.0",
     "redux": "^4.0.0",
     "redux-actions": "^2.3.2",
-    "redux-saga": "^0.16.0",
-    "reselect": "^3.0.1"
+    "redux-devtools-extension": "^2.13.2",
+    "redux-saga": "^0.16.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "jest",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.js*",
-    "server": "json-server --watch db.json --port 3001",
+    "server": "json-server --watch db.json --port 3000",
     "generate-users": "node generateUsers"
   },
   "devDependencies": {
@@ -44,5 +56,11 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
     "namor": "^1.0.1"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/file-mock.js",
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+    }
   }
 }

@@ -5,12 +5,12 @@ import { addNewUser, popUpOpen } from './actions/index.js'
 import PropTypes from 'prop-types';
 
 
-class AddNewUser extends Component {
+export class AddNewUser extends Component {
     constructor(props){
         super(props)
         this.state={}
     }
-    handelSubmit=(e) => {
+    handelSubmit(e) {
         e.preventDefault()
         const {firstName, lastName, age, visits, progress, status} = this.state
         if (firstName && lastName && age && visits && progress && status){
@@ -20,20 +20,20 @@ class AddNewUser extends Component {
             alert ("Input is empty")
         }
     }
-    handelCloseClick = (e) => {
+    handelCloseClick(e) {
         e.preventDefault()
         this.props.popUpOpen(false)
     }
-    handelChange = (target) => {
-        this.setState({[target.name]: target.value})
+    handelChange (e) {
+        this.setState({[e.target.name]: e.target.value})
     }
 
   render() {
     return (  
         <div className="popUp">
-            <button onClick={this.handelCloseClick} className="btnDel">x</button>
-            <form action="#" onSubmit={this.handelSubmit} 
-            onChange={({ target }) => this.handelChange(target)}
+            <button onClick={this.handelCloseClick.bind(this)} className="btnDel">x</button>
+            <form action="#" onSubmit={this.handelSubmit.bind(this)} 
+            onChange={this.handelChange.bind(this)}
             className="popUpForm">
             <input placeholder="first name"  className="input"
             type="text" name="firstName"/>   

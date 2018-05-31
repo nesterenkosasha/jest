@@ -4,7 +4,7 @@ import { withRouter } from 'react-router'
 import PropTypes from 'prop-types';
 
 
-class Table extends Component {
+export class Table extends Component {
   handelClick = (e, id) => {
     e.preventDefault()
     this.props.history.push(`/users/${id}`)
@@ -13,7 +13,7 @@ class Table extends Component {
 
     render(){
         return(
-          <div>
+          <div className="full-description">
             <table className="tableRow">
             <thead>
               <tr>

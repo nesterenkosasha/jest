@@ -6,45 +6,45 @@ import './App.css';
 import PropTypes from 'prop-types';
 
 
-class UserId extends Component {
+export class UserId extends Component {
     constructor(props){
         super(props)
         this.state={}
     }      
-    handelCloseClick = (e) => {
+    handelCloseClick (e){
         e.preventDefault()
        this.props.history.push('/users')
     }
 
-    handelUpdate = (e, user) => {
+    handelUpdate (e, user) {
         e.preventDefault()
         const updatedUser = this.state
             this.props.updateUser(Object.assign({}, user, updatedUser))
             this.props.history.push('/users')
      }
 
-    handelDeleteClick = (e, id) => {
+    handelDeleteClick (e, id) {
         e.preventDefault()
         this.props.toDelete(id)
     }
 
-    handelChange = (target) => {
-        this.setState({[target.name]: target.value})
+    handelChange (e) {
+        this.setState({[e.target.name]: e.target.value})
     }
 
     render(){
         let user = this.props.reducerUsers.find(u => u.id === Number(this.props.match.params.id))
         return(
-            <div>
+            <div className="full-description">
                 {
                     user 
                         ? (<div className="popUp">
                             <button 
-                            onClick={this.handelCloseClick}
+                            onClick={this.handelCloseClick.bind(this)}
                             className="btnDel">x</button>
                             <form action="#" 
-                            onSubmit={(e) => this.handelUpdate(e, user)} 
-                            onChange={({ target }) => this.handelChange(target)}
+                            onSubmit={this.handelUpdate.bind(this, user)} 
+                            onChange={this.handelChange.bind(this)}
                             className="popUpForm">
                             First name: <input defaultValue={user.firstName} className="input"
                             type="text" 
@@ -62,8 +62,8 @@ class UserId extends Component {
                             type="text" name="status" />   
                             <div>
                             <button className="btnInput">UPDATE</button>
-                            <button className="btnInput"
-                            onClick={(e) => this.handelDeleteClick(e, user.id)}
+                            <button className="btnInput btnRm"
+                            onClick={this.handelDeleteClick.bind(this, user.id)}
                             >DELETE</button>
                             </div> 
                             </form>  
